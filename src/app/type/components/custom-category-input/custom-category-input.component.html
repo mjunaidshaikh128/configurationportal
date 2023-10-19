@@ -1,0 +1,11 @@
+<!-- <nb-select (selectedChange)="onSelectChange($event)">
+      <nb-option *ngFor="let category of categories" [value]="category.id">{{
+        category.name
+      }}</nb-option>
+    </nb-select> -->
+
+  <select class="custom-dropdown-toggle" name="category" id="category" (change)="onSelectChange($event)">
+    <option *ngFor="let category of categories" [value]="category.id">
+      {{ category.name }}
+    </option>
+  </select>

@@ -1,0 +1,475 @@
+<nb-card>
+  <nb-card-header>Add Item</nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="itemForm" (ngSubmit)="submit()">
+      <!-- <div class="form-group">
+        <label for="exampleInputEmail1" class="label">Email address</label>
+        <input
+          type="email"
+          nbInput
+          fullWidth
+          id="exampleInputEmail1"
+          placeholder="Email"
+        />
+      </div> -->
+
+      <div class="form-group">
+        <label for="selectedCategory" class="label">Category</label>
+        <br />
+        <nb-select formControlName="selectedCategory" id="selectedCategory" [status]="
+        itemForm.get('selectedCategory')!.invalid && itemForm.get('selectedCategory')!.touched
+          ? 'danger'
+          : ''
+      ">
+          <nb-option
+            *ngFor="let category of categories"
+            [value]="category.id"
+            >{{ category.name }}</nb-option
+          >
+        </nb-select>
+        <div
+          style="color: red"
+          *ngIf="
+            itemForm.get('selectedCategory')!.invalid &&
+            itemForm.get('selectedCategory')!.touched &&
+            itemForm.controls['selectedCategory']!.hasError('required')
+          "
+        >
+          Category is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="selectedType" class="label">Type</label>
+        <br />
+        <nb-select
+          [status]="
+            itemForm.get('selectedType')!.invalid && itemForm.get('selectedType')!.touched
+              ? 'danger'
+              : ''
+          "
+          formControlName="selectedType"
+          id="selectedType"
+        >
+          <nb-option *ngFor="let type of types" [value]="type.id">{{
+            type.name
+          }}</nb-option>
+        </nb-select>
+        <div
+          style="color: red"
+          *ngIf="
+            itemForm.get('selectedType')!.invalid &&
+            itemForm.get('selectedType')!.touched &&
+            itemForm.controls['selectedType']!.hasError('required')
+          "
+        >
+          Type is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name" class="label">Name</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="name"
+          placeholder="Name"
+          formControlName="name"
+          [status]="
+            itemForm.get('name')!.invalid && itemForm.get('name')!.touched
+              ? 'danger'
+              : ''
+          "
+        />
+        <div
+          style="color: red"
+          *ngIf="
+            itemForm.get('name')!.invalid &&
+            itemForm.get('name')!.touched &&
+            itemForm.controls['name']!.hasError('required')
+          "
+        >
+          Name is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="selectedOwner" class="label">Owner</label>
+        <br />
+        <nb-select formControlName="selectedOwner" id="selectedOwner" [status]="
+        itemForm.get('selectedOwner')!.invalid && itemForm.get('selectedOwner')!.touched
+          ? 'danger'
+          : ''
+      ">
+          <nb-option *ngFor="let owner of owners" [value]="owner.id">{{
+            owner.name
+          }}</nb-option>
+        </nb-select>
+        <div
+        style="color: red"
+        *ngIf="
+          itemForm.get('selectedOwner')!.invalid &&
+          itemForm.get('selectedOwner')!.touched &&
+          itemForm.controls['selectedOwner']!.hasError('required')
+        "
+      >
+        Owner is required.
+      </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="selectedLocation" class="label">Location</label>
+        <br />
+        <nb-select
+          formControlName="selectedLocation"
+          id="selectedLocation"
+          fullWidth
+          [status]="
+            itemForm.get('selectedLocation')!.invalid && itemForm.get('selectedLocation')!.touched
+              ? 'danger'
+              : ''
+          "
+        >
+          <nb-option *ngFor="let location of locations" [value]="location.id">{{
+            location.address
+          }}</nb-option>
+        </nb-select>
+        <div
+        style="color: red"
+        *ngIf="
+          itemForm.get('selectedLocation')!.invalid &&
+          itemForm.get('selectedLocation')!.touched &&
+          itemForm.controls['selectedLocation']!.hasError('required')
+        "
+      >
+      Location is required.
+      </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="selectedEquipments" class="label">Equipments</label>
+        <br />
+        <nb-select
+          formControlName="selectedEquipments"
+          id="selectedEquipments"
+          multiple
+          fullWidth
+          [status]="
+            itemForm.get('selectedEquipments')!.invalid && itemForm.get('selectedEquipments')!.touched
+              ? 'danger'
+              : ''
+          "
+        >
+          <nb-option *ngFor="let equipment of equipments" [value]="equipment">{{
+            equipment.name
+          }}</nb-option>
+        </nb-select>
+        <div
+        style="color: red"
+        *ngIf="
+          itemForm.get('selectedEquipments')!.invalid &&
+          itemForm.get('selectedEquipments')!.touched &&
+          itemForm.controls['selectedEquipments']!.hasError('required')
+        "
+      >
+      Equipment(s) is required.
+      </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="selectedServices" class="label">Services</label>
+        <br />
+        <nb-select
+          formControlName="selectedServices"
+          id="selectedServices"
+          multiple
+          fullWidth
+          [status]="
+            itemForm.get('selectedServices')!.invalid && itemForm.get('selectedServices')!.touched
+              ? 'danger'
+              : ''
+          "
+        >
+          <nb-option *ngFor="let service of services" [value]="service">{{
+            service.name
+          }}</nb-option>
+        </nb-select>
+        <div
+        style="color: red"
+        *ngIf="
+          itemForm.get('selectedServices')!.invalid &&
+          itemForm.get('selectedServices')!.touched &&
+          itemForm.controls['selectedServices']!.hasError('required')
+        "
+      >
+      Service(s) is required.
+      </div>
+
+      </div>
+      <div class="form-group">
+        <label for="files" class="label">Select Images</label>
+        <br />
+        <input type="file" (change)="onFileSelected($event)" multiple />
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="label">Description</label>
+        <textarea
+          type="textarea"
+          nbInput
+          fullWidth
+          id="description"
+          placeholder="Description"
+          formControlName="description"
+          [status]="
+            itemForm.get('description')!.invalid && itemForm.get('description')!.touched
+              ? 'danger'
+              : ''
+          "
+        ></textarea>
+        <div
+        style="color: red"
+        *ngIf="
+          itemForm.get('description')!.invalid &&
+          itemForm.get('description')!.touched &&
+          itemForm.controls['description']!.hasError('required')
+        "
+      >
+      Description is required.
+      </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="manufacturer" class="label">Manufacturer</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="manufacturer"
+          placeholder="Manufacturer"
+          formControlName="manufacturer"
+          [status]="
+          itemForm.get('manufacturer')!.invalid && itemForm.get('manufacturer')!.touched
+            ? 'danger'
+            : ''
+        "
+
+        />
+        <div
+        style="color: red"
+        *ngIf="
+          itemForm.get('manufacturer')!.invalid &&
+          itemForm.get('manufacturer')!.touched &&
+          itemForm.controls['manufacturer']!.hasError('required')
+        "
+      >
+      Manufacturer is required.
+      </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="model" class="label">Model</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="model"
+          placeholder="Model"
+          formControlName="model"
+          [status]="
+          itemForm.get('model')!.invalid && itemForm.get('model')!.touched
+            ? 'danger'
+            : ''
+        "
+          
+        />
+        <div
+        style="color: red"
+        *ngIf="
+          itemForm.get('model')!.invalid &&
+          itemForm.get('model')!.touched &&
+          itemForm.controls['model']!.hasError('required')
+        "
+      >
+      Model is required.
+      </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="year" class="label">Year</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="year"
+          placeholder="Year"
+          formControlName="year"
+          [status]="
+          itemForm.get('year')!.invalid && itemForm.get('year')!.touched
+            ? 'danger'
+            : ''
+        "
+
+        />
+        <div
+        style="color: red"
+        *ngIf="
+          itemForm.get('year')!.invalid &&
+          itemForm.get('year')!.touched &&
+          itemForm.controls['year']!.hasError('required')
+        "
+      >
+      Year is required.
+      </div>
+
+      </div>
+      <div class="form-group">
+        <label for="capacity" class="label">Capacity</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="capacity"
+          placeholder="Capacity"
+          formControlName="capacity"
+          [status]="
+          itemForm.get('capacity')!.invalid && itemForm.get('capacity')!.touched
+            ? 'danger'
+            : ''
+        "
+
+        />
+        <div
+        style="color: red"
+        *ngIf="
+          itemForm.get('capacity')!.invalid &&
+          itemForm.get('capacity')!.touched &&
+          itemForm.controls['capacity']!.hasError('required')
+        "
+      >
+      Capacity is required.
+      </div>
+
+      </div>
+      <div class="form-group">
+        <label for="length" class="label">Length</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="length"
+          placeholder="Length"
+          formControlName="length"
+          [status]="
+          itemForm.get('length')!.invalid && itemForm.get('length')!.touched
+            ? 'danger'
+            : ''
+        "
+
+        />
+        <div
+        style="color: red"
+        *ngIf="
+          itemForm.get('length')!.invalid &&
+          itemForm.get('length')!.touched &&
+          itemForm.controls['length']!.hasError('required')
+        "
+      >
+      Length is required.
+      </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="enginepower" class="label">Engine Power</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="enginepower"
+          placeholder="Engine Power"
+          formControlName="enginePower"
+          [status]="
+          itemForm.get('enginePower')!.invalid && itemForm.get('enginePower')!.touched
+            ? 'danger'
+            : ''
+        "
+
+        />
+        <div
+        style="color: red"
+        *ngIf="
+          itemForm.get('enginePower')!.invalid &&
+          itemForm.get('enginePower')!.touched &&
+          itemForm.controls['enginePower']!.hasError('required')
+        "
+      >
+      Engine Power is required.
+      </div>
+
+      </div>
+      <div class="form-group">
+        <label for="draft" class="label">Draft</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="draft"
+          placeholder="Draft"
+          formControlName="draft"
+        />
+      </div>
+      <div class="form-group">
+        <label for="cabins" class="label">Cabins</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="cabins"
+          placeholder="Cabins"
+          formControlName="cabins"
+        />
+      </div>
+      <div class="form-group">
+        <label for="berths" class="label">Berths</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="berths"
+          placeholder="Berths"
+          formControlName="berths"
+          
+        />
+      </div>
+      <div class="form-group">
+        <label for="bathrooms" class="label">Bathrooms</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="bathrooms"
+          placeholder="Bathrooms"
+          formControlName="bathrooms"
+        />
+      </div>
+
+      <!-- <nb-card-header>Select</nb-card-header>
+      <nb-card-body>
+        <nb-select selected="1">
+          <nb-option value="1">Option 1</nb-option>
+          <nb-option value="2">Option 2</nb-option>
+        </nb-select>
+      </nb-card-body> -->
+
+      <button type="submit" nbButton status="danger">Submit</button>
+    </form>
+  </nb-card-body>
+</nb-card>

@@ -20,10 +20,27 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { UserAuthModule } from './user-auth/user-auth.module';
+import { CategoryModule } from './category/category.module';
+import { FileuploadComponent } from './fileupload/fileupload.component';
+import { ItemModule } from './item/item.module';
+import { OwnerModule } from './owner/owner.module';
+import { LocationModule } from './location/location.module';
+import { EquipmentModule } from './equipment/equipment.module';
+import { CserviceModule } from './cservice/cservice.module';
+import { TypeModule } from './type/type.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    TypeModule,
+    CserviceModule,
+    EquipmentModule,
+    LocationModule,
+    OwnerModule,
+    ItemModule,
+    UserAuthModule,
+    CategoryModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
