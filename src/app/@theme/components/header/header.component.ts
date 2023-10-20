@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   user: any;
+  username: any = JSON.parse(localStorage.getItem('username'))
 
   themes = [
     {
