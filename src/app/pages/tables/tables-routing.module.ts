@@ -11,6 +11,7 @@ import { LocationComponent } from '../../location/location.component';
 import { EquipmentComponent } from '../../equipment/equipment.component';
 import { CserviceComponent } from '../../cservice/cservice.component';
 import { TypeComponent } from '../../type/type.component';
+import { BookingComponent } from '../../booking/booking.component';
 
 const routes: Routes = [{
   path: '',
@@ -47,6 +48,10 @@ const routes: Routes = [{
     {
       path: 'type-table',
       component: TypeComponent,
+    },
+    {
+      path: 'booking-table',
+      component: BookingComponent,
     },
   ],
 }];

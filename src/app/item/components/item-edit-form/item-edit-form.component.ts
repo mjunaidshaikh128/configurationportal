@@ -71,7 +71,7 @@ export class ItemEditFormComponent implements OnInit {
   }
 
   patchForm() {
-    this.itemForm.controls["name"].setValue("Hello");
+    // this.itemForm.controls["name"].setValue("Hello");
     this.itemService.getItem(this.itemId).subscribe((res) => {
       this.item = res;
       this.patch();

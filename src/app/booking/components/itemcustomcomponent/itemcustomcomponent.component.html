@@ -1,0 +1,5 @@
+<select class="custom-dropdown-toggle" name="category" id="category" [(ngModel)]="cell.value" (change)="onSelectChange($event)">
+    <option *ngFor="let item of items" [value]="item.id">
+      {{ item.name }}
+    </option>
+  </select>

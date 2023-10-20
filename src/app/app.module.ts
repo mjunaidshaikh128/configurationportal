@@ -29,10 +29,12 @@ import { LocationModule } from './location/location.module';
 import { EquipmentModule } from './equipment/equipment.module';
 import { CserviceModule } from './cservice/cservice.module';
 import { TypeModule } from './type/type.module';
+import { BookingModule } from './booking/booking.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    BookingModule,
     TypeModule,
     CserviceModule,
     EquipmentModule,

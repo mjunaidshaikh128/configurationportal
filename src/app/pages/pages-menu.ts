@@ -234,6 +234,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Types Table',
         link: '/pages/tables/type-table',
       },
+      {
+        title: 'Booking Table',
+        link: '/pages/tables/booking-table',
+      },
       // {
       //   title: 'Tree Grid',
       //   link: '/pages/tables/tree-grid',
