@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../item.service';
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   FormControl,
   FormGroup,
@@ -23,7 +24,8 @@ export class ItemFormComponent implements OnInit {
   selectedFiles: FileList | null;
 
 
-  constructor(private itemService: ItemService, private formBuilder: FormBuilder) { 
+  constructor(private itemService: ItemService, private formBuilder: FormBuilder, private router: Router
+    ) { 
     this.itemService.getCategories().subscribe(res => this.categories = res)
     this.itemService.getTypes().subscribe(res => this.types = res)
     this.itemService.getOwners().subscribe(res => this.owners = res)
@@ -96,6 +98,8 @@ export class ItemFormComponent implements OnInit {
     //console.log(this.itemForm.get('selectedLocation').value);
     //console.log(formData.get('categoryid'));
     this.itemService.createItem(formData).subscribe(res => console.log(res))
+    this.router.navigateByUrl("/pages/tables/item-table")
+
 
   }
 }
