@@ -1,8 +1,8 @@
 <nb-card>
-    <nb-card-header>Edit/Update Item</nb-card-header>
-    <nb-card-body>
-      <form [formGroup]="itemForm" (ngSubmit)="submit()">
-        <!-- <div class="form-group">
+  <nb-card-header>Edit/Update Item</nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="itemForm" (ngSubmit)="submit()">
+      <!-- <div class="form-group">
           <label for="exampleInputEmail1" class="label">Email address</label>
           <input
             type="email"
@@ -12,247 +12,254 @@
             placeholder="Email"
           />
         </div> -->
-  
-        <div class="form-group">
-          <label for="selectedCategory" class="label">Category</label>
-          <br />
-          <nb-select formControlName="selectedCategory" id="selectedCategory">
-            <nb-option
-              *ngFor="let category of categories"
-              [value]="category.id"
-              >{{ category.name }}</nb-option
-            >
-          </nb-select>
-        </div>
-  
-        <div class="form-group">
-          <label for="selectedType" class="label">Type</label>
-          <br />
-          <nb-select formControlName="selectedType" id="selectedType">
-            <nb-option *ngFor="let type of types" [value]="type.id">{{
-              type.name
-            }}</nb-option>
-          </nb-select>
-        </div>
-  
-        <div class="form-group">
-          <label for="exampleInputPassword1" class="label">Name</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="name"
-            placeholder="Name"
-            formControlName="name"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="selectedOwner" class="label">Owner</label>
-          <br />
-          <nb-select formControlName="selectedOwner" id="selectedOwner">
-            <nb-option *ngFor="let owner of owners" [value]="owner.id">{{
-              owner.name
-            }}</nb-option>
-          </nb-select>
-        </div>
-  
-        <div class="form-group">
-          <label for="selectedLocation" class="label">Location</label>
-          <br />
-          <nb-select
-            formControlName="selectedLocation"
-            id="selectedLocation"
-            fullWidth
-          >
-            <nb-option *ngFor="let location of locations" [value]="location.id">{{
-              location.address
-            }}</nb-option>
-          </nb-select>
-        </div>
-  
-        <div class="form-group">
-          <label for="selectedEquipments" class="label">Equipments</label>
-          <br />
-          <nb-select
-            formControlName="selectedEquipments"
-            id="selectedEquipments"
-            multiple
-            fullWidth
-          >
-            <nb-option *ngFor="let equipment of equipments" [value]="equipment.id">{{
-              equipment.name
-            }}</nb-option>
-          </nb-select>
-        </div>
-  
-        <div class="form-group">
-          <label for="selectedServices" class="label">Services</label>
-          <br />
-          <nb-select
-            formControlName="selectedServices"
-            id="selectedServices"
-            multiple
-            fullWidth
-          >
-            <nb-option *ngFor="let service of services" [value]="service.id">{{
-              service.name
-            }}</nb-option>
-          </nb-select>
-        </div>
-        <div class="form-group">
-          <label for="files" class="label">Select Images</label>
-          <br />
-          <input type="file" (change)="onFileSelected($event)" multiple />
-          <div class="d-flex">
-            <a *ngFor="let image of images" [href]="image" target="_blank">
 
-                <img width="50px"  [src]="image" alt="">
-            </a>
-          </div>
+      <div class="form-group">
+        <label for="selectedCategory" class="label">Category</label>
+        <br />
+        <nb-select formControlName="selectedCategory" id="selectedCategory">
+          <nb-option
+            *ngFor="let category of categories"
+            [value]="category.id"
+            >{{ category.name }}</nb-option
+          >
+        </nb-select>
+      </div>
+
+      <div class="form-group">
+        <label for="selectedType" class="label">Type</label>
+        <br />
+        <nb-select formControlName="selectedType" id="selectedType">
+          <nb-option *ngFor="let type of types" [value]="type.id">{{
+            type.name
+          }}</nb-option>
+        </nb-select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="label">Name</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="name"
+          placeholder="Name"
+          formControlName="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="selectedOwner" class="label">Owner</label>
+        <br />
+        <nb-select formControlName="selectedOwner" id="selectedOwner">
+          <nb-option *ngFor="let owner of owners" [value]="owner.id">{{
+            owner.name
+          }}</nb-option>
+        </nb-select>
+      </div>
+
+      <div class="form-group">
+        <label for="selectedLocation" class="label">Location</label>
+        <br />
+        <nb-select
+          formControlName="selectedLocation"
+          id="selectedLocation"
+          fullWidth
+        >
+          <nb-option *ngFor="let location of locations" [value]="location.id">{{
+            location.address
+          }}</nb-option>
+        </nb-select>
+      </div>
+
+      <div class="form-group">
+        <label for="selectedEquipments" class="label">Equipments</label>
+        <br />
+        <nb-select
+          formControlName="selectedEquipments"
+          id="selectedEquipments"
+          multiple
+          fullWidth
+        >
+          <nb-option
+            *ngFor="let equipment of equipments"
+            [value]="equipment.id"
+            >{{ equipment.name }}</nb-option
+          >
+        </nb-select>
+      </div>
+
+      <div class="form-group">
+        <label for="selectedServices" class="label">Services</label>
+        <br />
+        <nb-select
+          formControlName="selectedServices"
+          id="selectedServices"
+          multiple
+          fullWidth
+        >
+          <nb-option *ngFor="let service of services" [value]="service.id">{{
+            service.name
+          }}</nb-option>
+        </nb-select>
+      </div>
+      <div class="form-group">
+        <label for="files" class="label">Select Images</label>
+        <br />
+        <input type="file" (change)="onFileSelected($event)" multiple />
+        <div class="d-flex mt-3">
+          <a *ngFor="let image of images" [href]="image" target="_blank">
+            <img class="rounded" width="80px" height="80px" [src]="imgURL + image" alt="" />
+          </a>
         </div>
-  
-        <div class="form-group">
-          <label for="description" class="label">Description</label>
-          <textarea
-            type="textarea"
-            nbInput
-            fullWidth
-            id="description"
-            placeholder="Description"
-            formControlName="description"
-          ></textarea>
-        </div>
-  
-        <div class="form-group">
-          <label for="manufacturer" class="label">Manufacturer</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="manufacturer"
-            placeholder="Manufacturer"
-            formControlName="manufacturer"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="model" class="label">Model</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="model"
-            placeholder="Model"
-            formControlName="model"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="year" class="label">Year</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="year"
-            placeholder="Year"
-            formControlName="year"
-          />
-        </div>
-        <div class="form-group">
-          <label for="capacity" class="label">Capacity</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="capacity"
-            placeholder="Capacity"
-            formControlName="capacity"
-          />
-        </div>
-        <div class="form-group">
-          <label for="length" class="label">Length</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="length"
-            placeholder="Length"
-            formControlName="length"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="enginepower" class="label">Engine Power</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="enginepower"
-            placeholder="Engine Power"
-            formControlName="enginePower"
-          />
-        </div>
-        <div class="form-group">
-          <label for="draft" class="label">Draft</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="draft"
-            placeholder="Draft"
-            formControlName="draft"
-          />
-        </div>
-        <div class="form-group">
-          <label for="cabins" class="label">Cabins</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="cabins"
-            placeholder="Cabins"
-            formControlName="cabins"
-          />
-        </div>
-        <div class="form-group">
-          <label for="berths" class="label">Berths</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="berths"
-            placeholder="Berths"
-            formControlName="berths"
-          />
-        </div>
-        <div class="form-group">
-          <label for="bathrooms" class="label">Bathrooms</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="bathrooms"
-            placeholder="Bathrooms"
-            formControlName="bathrooms"
-          />
-        </div>
-  
-        
-  
-  
-  
-  
-        <!-- <nb-card-header>Select</nb-card-header>
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="label">Description</label>
+        <textarea
+          type="textarea"
+          nbInput
+          fullWidth
+          id="description"
+          placeholder="Description"
+          formControlName="description"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="manufacturer" class="label">Manufacturer</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="manufacturer"
+          placeholder="Manufacturer"
+          formControlName="manufacturer"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="model" class="label">Model</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="model"
+          placeholder="Model"
+          formControlName="model"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="year" class="label">Year</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="year"
+          placeholder="Year"
+          formControlName="year"
+        />
+      </div>
+      <div class="form-group">
+        <label for="capacity" class="label">Capacity</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="capacity"
+          placeholder="Capacity"
+          formControlName="capacity"
+        />
+      </div>
+      <div class="form-group">
+        <label for="length" class="label">Length</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="length"
+          placeholder="Length"
+          formControlName="length"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="enginepower" class="label">Engine Power</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="enginepower"
+          placeholder="Engine Power"
+          formControlName="enginePower"
+        />
+      </div>
+      <div class="form-group">
+        <label for="draft" class="label">Draft</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="draft"
+          placeholder="Draft"
+          formControlName="draft"
+        />
+      </div>
+      <div class="form-group">
+        <label for="cabins" class="label">Cabins</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="cabins"
+          placeholder="Cabins"
+          formControlName="cabins"
+        />
+      </div>
+      <div class="form-group">
+        <label for="berths" class="label">Berths</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="berths"
+          placeholder="Berths"
+          formControlName="berths"
+        />
+      </div>
+      <div class="form-group">
+        <label for="bathrooms" class="label">Bathrooms</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="bathrooms"
+          placeholder="Bathrooms"
+          formControlName="bathrooms"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="bathrooms" class="label">Per Day Cost</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="perDayCost"
+          placeholder="Per Day Cost"
+          formControlName="perDayCost"
+        />
+      </div>
+
+      <!-- <nb-card-header>Select</nb-card-header>
         <nb-card-body>
           <nb-select selected="1">
             <nb-option value="1">Option 1</nb-option>
             <nb-option value="2">Option 2</nb-option>
           </nb-select>
         </nb-card-body> -->
-  
-        <button type="submit" nbButton status="danger">Update</button>
-      </form>
-    </nb-card-body>
-  </nb-card>
-  
+
+      <button type="submit" nbButton status="danger">Update</button>
+    </form>
+  </nb-card-body>
+</nb-card>

@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ["./item-edit-form.component.scss"],
 })
 export class ItemEditFormComponent implements OnInit {
+  imgURL: string = "https://res.cloudinary.com/dtsuwtlgx"
   itemId: string;
   item: any;
   categories: any;
@@ -67,6 +68,7 @@ export class ItemEditFormComponent implements OnInit {
       cabins: ["", [Validators.required]],
       berths: ["", [Validators.required]],
       bathrooms: ["", [Validators.required]],
+      perDayCost: ["", [Validators.required]],
     });
   }
 
@@ -126,6 +128,7 @@ export class ItemEditFormComponent implements OnInit {
     formData.append("cabins", this.itemForm.get("cabins").value);
     formData.append("berths", this.itemForm.get("berths").value);
     formData.append("bathrooms", this.itemForm.get("bathrooms").value);
+    formData.append("perDayCost", this.itemForm.get("perDayCost").value);
     formData.append(
       "equipments",
       JSON.stringify(this.itemForm.get("selectedEquipments").value)

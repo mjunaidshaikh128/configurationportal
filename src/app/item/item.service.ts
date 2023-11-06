@@ -27,8 +27,8 @@ export class ItemService {
     return this.http.get("http://localhost:3000/equipment");
   }
 
-  createItem(data) {
-    return this.http.post("http://localhost:3000/item", data)
+  createItem(data: any): Observable<any> {
+    return this.http.post("http://localhost:3000/item", data);
   }
 
   updateItem(data, id: string): Observable<any> {

@@ -13,6 +13,7 @@ import {
   NbLayoutModule,
   NbRadioModule,
   NbSelectModule,
+  NbSpinnerModule,
   NbTreeGridModule,
   NbUserModule,
 } from "@nebular/theme";
@@ -28,6 +29,7 @@ import { ItemEditFormComponent } from './components/item-edit-form/item-edit-for
 @NgModule({
   declarations: [ItemFormComponent, ItemTableComponent, ItemEditFormComponent],
   imports: [
+    NbSpinnerModule,
     ThemeModule,
     CommonModule,
     NbActionsModule,

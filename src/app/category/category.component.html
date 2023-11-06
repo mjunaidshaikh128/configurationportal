@@ -1,3 +1,11 @@
+<div class="loading-container" *ngIf="loading">
+  <nb-spinner
+    size="large"
+    status="primary"
+    message="Please wait..."
+    fixed
+  ></nb-spinner>
+</div>
 <nb-card>
   <nb-card-header> Category Table </nb-card-header>
 

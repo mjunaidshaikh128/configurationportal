@@ -4,6 +4,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { ItemService } from '../../item.service';
 import { Router } from '@angular/router';
+import { NbToastrService } from '@nebular/theme';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class ItemTableComponent implements OnInit {
 
-  constructor(private itemService: ItemService, private router: Router) {
+  constructor(private itemService: ItemService, private router: Router, private toastrService: NbToastrService) {
     this.itemService.getAllItems().subscribe(data => this.source.load(data))
 
    }
@@ -38,6 +39,10 @@ export class ItemTableComponent implements OnInit {
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
+    },
+    pager: {
+      display: true,
+      perPage: 5
     },
     columns: {
       name: {
@@ -66,8 +71,13 @@ export class ItemTableComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
 
+  
+
   onCreate() {
+    // this.showToast()
+    // setTimeout(() => this.router.navigateByUrl("/pages/forms/itemform"),3000)
     this.router.navigateByUrl("/pages/forms/itemform")
+
   }
 
   onEdit(event: any) {
@@ -76,4 +86,11 @@ export class ItemTableComponent implements OnInit {
 
   }
 
+  showToast() {
+    this.toastrService.success(
+      'This is a success toast message',
+      'Success',
+      { duration: 3000 }
+    );
+  }
 }

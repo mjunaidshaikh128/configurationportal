@@ -5,7 +5,8 @@ import { SmartTableData } from '../@core/data/smart-table';
 import { CategoryService } from './category.service';
 import { ImageRenderComponentComponent } from './image-render-component/image-render-component.component';
 import { FileuploadComponent } from '../fileupload/fileupload.component';
-
+import { NbToastrService } from '@nebular/theme';
+import { SpinnerComponent } from '../pages/extra-components/spinner/spinner.component';
 
 @Component({
   selector: 'ngx-category',
@@ -51,6 +52,7 @@ export class CategoryComponent implements OnInit {
       status: {
         title: 'Status',
         type: 'string',
+        hide: true
       },
       // image: {
       //   title: 'Image',
@@ -71,8 +73,9 @@ export class CategoryComponent implements OnInit {
   };
 
   source: LocalDataSource = new LocalDataSource();
+  loading: boolean = false
 
-  constructor(private service: SmartTableData, private categoryService: CategoryService) {
+  constructor(private service: SmartTableData, private categoryService: CategoryService, private toastrService: NbToastrService) {
       this.categoryService.getAllCategories().subscribe(data => this.source.load(data))
   }
   
@@ -88,19 +91,28 @@ export class CategoryComponent implements OnInit {
   }
 
   async onCreateConfirm(event: any) {
+    this.loading = true
     //console.log(event.newData);
     // const {id, ...rest} = event.newData
     // const jsonData = JSON.stringify(rest);
 
-    const {name, description, status, image} = event.newData
+    const {name, description, image} = event.newData
     const formData = new FormData()
     formData.append('name', name)
     formData.append('description', description)
-    formData.append('status', status)
+    formData.append('status', "enabled")
     formData.append('image', image)
     // console.log(formData);
-    await this.categoryService.createCategory(formData).subscribe(res => console.log(res))
-    event.confirm.resolve();
+    await this.categoryService.createCategory(formData).subscribe(res => {
+      console.log(res)
+      event.confirm.resolve();
+      this.loading = false
+      this.showToast("Category created successfully!")
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+
+    })
   }
 
   onEditConfirm(event: any) {
@@ -109,5 +121,13 @@ export class CategoryComponent implements OnInit {
     const jsonData = JSON.stringify(updatedData);
     this.categoryService.editCategory(jsonData, id).subscribe(res => console.log(res))
     event.confirm.resolve();
+  }
+
+  showToast(text: string) {
+    this.toastrService.success(
+      text,
+      'Success',
+      { duration: 3000 }
+    );
   }
 }
