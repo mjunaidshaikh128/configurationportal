@@ -31,7 +31,7 @@ export class UserAuthComponent implements OnInit {
           if (res.access_token) {
             this.isAuthenticated = true
             this.userAuthService.getProfile(res.access_token).subscribe((data) => {
-              localStorage.setItem('username', JSON.stringify(data.username));
+              localStorage.setItem('userId', JSON.stringify(data.userId));
             })
           }
         });

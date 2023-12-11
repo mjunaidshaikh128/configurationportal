@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { CategoryComponent } from '../category/category.component';
+// import { Chat}
 
 const routes: Routes = [{
   path: '',
